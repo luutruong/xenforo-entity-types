@@ -1,0 +1,28 @@
+{
+  "name": "xenforo-entity-types",
+  "version": "1.0.0",
+  "description": "XenForo entity in typescript",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist/ && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luutruong/xenforo-entity-types.git"
+  },
+  "keywords": [
+    "xenforo"
+  ],
+  "author": "Truong Luu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luutruong/xenforo-entity-types/issues"
+  },
+  "homepage": "https://github.com/luutruong/xenforo-entity-types#readme",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
