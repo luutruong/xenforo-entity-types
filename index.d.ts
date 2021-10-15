@@ -161,6 +161,8 @@ export interface XFEntityConversation {
   can_upload_attachment: boolean;
   can_reply: boolean;
   start_date: number;
+  is_unread: boolean;
+  is_starred: boolean;
 }
 
 export interface XFEntityConversationMessage {
