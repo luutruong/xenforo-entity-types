@@ -94,6 +94,8 @@ export interface XFEntityUser extends XFEntityBaseUser {
   is_followed: boolean;
   is_staff: boolean;
   message_count: number;
+  activity_visible: boolean;
+  last_activity: number;
 }
 
 // Post
