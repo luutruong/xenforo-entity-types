@@ -93,9 +93,12 @@ export interface XFEntityUser extends XFEntityBaseUser {
   can_follow: boolean;
   is_followed: boolean;
   is_staff: boolean;
+  is_banned: boolean;
+  is_ignored: boolean;
   message_count: number;
   activity_visible: boolean;
   last_activity: number;
+  view_url: string;
 }
 
 // Post
