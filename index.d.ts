@@ -99,6 +99,10 @@ export interface XFEntityUser extends XFEntityBaseUser {
   activity_visible: boolean;
   last_activity: number;
   view_url: string;
+
+  // @since2021102300
+  reaction_score: number;
+  trophy_points: number;
 }
 
 // Post
