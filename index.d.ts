@@ -103,6 +103,14 @@ export interface XFEntityUser extends XFEntityBaseUser {
   // @since2021102300
   reaction_score: number;
   trophy_points: number;
+
+  // @since2021110500
+  user_state: 'valid' | 'email_confirm' | 'email_confirm_edit' | 'moderated' | 'email_bounce' | 'rejected' | 'disabled';
+  profile_banner_urls: {
+    l: string | null;
+    m: string | null;
+  };
+  location: string;
 }
 
 // Post
