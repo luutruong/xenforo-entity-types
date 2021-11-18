@@ -48,6 +48,7 @@ export interface XFEntityThread {
   User: XFEntityUser;
   first_post_id: number;
   FirstPost: XFEntityPost;
+  LastPost?: XFEntityPost;
   can_watch: boolean;
   can_reply: boolean;
   can_soft_delete: boolean;
