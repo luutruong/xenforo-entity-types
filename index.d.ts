@@ -143,10 +143,16 @@ export interface XFEntityAttachment {
   height: number;
   thumbnail_width: number;
   thumbnail_height: number;
-  view_url: string;
+  direct_url: string;
   thumbnail_url: string;
   filename: string;
   file_size: number;
+  is_audio: boolean;
+  is_video: boolean;
+  attach_date: number;
+  content_id: number;
+  content_type: string;
+  view_count: number;
 }
 
 // UserAlert
