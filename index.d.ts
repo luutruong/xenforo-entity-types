@@ -174,22 +174,37 @@ export interface XFEntityNotification {
 
 // Conversation
 export interface XFEntityConversation {
+  can_edit: boolean;
+  can_invite: boolean;
+  can_reply: boolean;
+  can_upload_attachment: boolean;
   conversation_id: number;
+  conversation_open: boolean;
+  first_message_id: number;
+  is_starred: boolean;
+  is_unread: boolean;
+  last_message_date: number;
+  last_message_id: number;
+  last_message_user_id: number;
   title: string;
   user_id: number;
   username: string;
   Starter: XFEntityUser;
-  last_message_id: number;
-  last_message_date: number;
-  LastMessage: XFEntityConversationMessage;
-  can_upload_attachment: boolean;
-  can_reply: boolean;
+  LastMessage?: XFEntityConversationMessage;
   start_date: number;
-  is_unread: boolean;
-  is_starred: boolean;
+  open_invite: boolean;
+  recipient_count: boolean;
+  recipients: {[key: number]: string};
+  reply_count: number;
+  view_url: string;
 }
 
 export interface XFEntityConversationMessage {
+  attach_count: number;
+  can_edit: boolean;
+  can_react: boolean;
+  embed_metadata: {[key: string]: any};
+  is_unread: boolean;
   message_id: number;
   user_id: number;
   username: string;
@@ -197,9 +212,10 @@ export interface XFEntityConversationMessage {
   conversation_id: number;
   message_date: number;
   message_parsed: string;
-  can_react: boolean;
   is_reacted_to: boolean;
   visitor_reaction_id: number;
+  reaction_score: number;
+  view_url: string;
 }
 
 // ProfilePost
