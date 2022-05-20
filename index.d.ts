@@ -193,7 +193,7 @@ export interface XFEntityConversation {
   LastMessage?: XFEntityConversationMessage;
   start_date: number;
   open_invite: boolean;
-  recipient_count: boolean;
+  recipient_count: number;
   recipients: {[key: number]: string};
   reply_count: number;
   view_url: string;
