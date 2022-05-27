@@ -119,7 +119,7 @@ export interface XFEntityPost {
   post_id: number;
   user_id: number;
   username: string;
-  User: XFEntityUser;
+  User: XFEntityUser | null;
   message: string;
   message_parsed: string;
   thread_id: number;
@@ -190,7 +190,7 @@ export interface XFEntityConversation {
   user_id: number;
   username: string;
   Starter: XFEntityUser;
-  LastMessage?: XFEntityConversationMessage;
+  LastMessage?: XFEntityConversationMessage | null;
   start_date: number;
   open_invite: boolean;
   recipient_count: number;
@@ -236,7 +236,7 @@ export interface XFEntityProfilePost {
   post_date: number;
   user_id: number;
   username: string;
-  User: XFEntityUser;
+  User: XFEntityUser | null;
   view_url: string;
 }
 
@@ -251,7 +251,18 @@ export interface XFEntityProfilePostComment {
   message_parsed: string;
   profile_post_comment_id: number;
   profile_post_id: number;
-  User: XFEntityUser;
+  User: XFEntityUser | null;
   user_id: number;
   username: string;
+}
+
+// Reactions
+export interface XFEntityReactionContent {
+  reaction_content_id: number;
+  reaction_id: number;
+  content_type: string;
+  content_id: number;
+  reaction_user_id: number;
+  reaction_date: number;
+  ReactionUser: XFEntityUser | null;
 }
