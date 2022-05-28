@@ -65,6 +65,12 @@ export interface XFEntityThread {
   Forum?: XFEntityForum;
 }
 
+export interface XFEntityThreadPrefixGroup {
+  display_order: number;
+  prefix_group_id: number;
+  title: string;
+}
+
 export interface XFEntityThreadPrefix {
   description: string;
   display_order: number;
