@@ -134,6 +134,7 @@ export interface XFEntityPost {
   post_date: number;
   Attachments: XFEntityAttachment[];
   embed_metadata: {[key: string]: any};
+  view_url: string;
 }
 
 // Attachment
@@ -254,6 +255,7 @@ export interface XFEntityProfilePostComment {
   User: XFEntityUser | null;
   user_id: number;
   username: string;
+  view_url: string;
 }
 
 // Reactions
