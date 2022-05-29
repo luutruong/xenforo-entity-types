@@ -6,6 +6,7 @@ export type XFEntityUserAvatarUrls = {
   l: string | null;
   h: string | null;
 };
+export type XFEntityState = 'visible' | 'moderated' | 'deleted';
 
 // Node, Forum
 export interface XFEntityBaseNode {
@@ -49,6 +50,11 @@ export interface XFEntityThread {
   first_post_id: number;
   FirstPost: XFEntityPost;
   LastPost?: XFEntityPost;
+  
+  // perms
+  can_edit: boolean;
+  can_edit_tags: boolean;
+  can_hard_delete: boolean;
   can_watch: boolean;
   can_reply: boolean;
   can_soft_delete: boolean;
@@ -56,13 +62,28 @@ export interface XFEntityThread {
   can_view_attachments: boolean;
   can_ignore: boolean;
   can_report: boolean;
+
   is_watching: boolean;
+  is_ignored: boolean;
+  is_unread: boolean;
+
   reply_count: number;
   view_count: number;
   view_url: string;
   tags: string[];
   prefix: string;
   Forum?: XFEntityForum;
+  discussion_state: XFEntityState;
+  discussion_type: string;
+  discussion_open: boolean;
+  custom_fields: {[key: string]: any};
+
+  // last post
+  last_post_date: number;
+  last_post_id: number;
+  last_post_user_id: number;
+  last_post_username: string;
+  sticky: boolean;
 }
 
 export interface XFEntityThreadPrefixGroup {
@@ -121,7 +142,7 @@ export interface XFEntityUser extends XFEntityBaseUser {
 }
 
 // Post
-export interface XFEntityPost {
+export interface XFEntityPost extends XFEntityReactionData {
   post_id: number;
   user_id: number;
   username: string;
@@ -132,15 +153,14 @@ export interface XFEntityPost {
   position: number;
   reaction_score: number;
   can_report: boolean;
-  can_react: boolean;
   can_soft_delete: boolean;
   is_ignored: boolean;
-  is_reacted_to: boolean;
-  visitor_reaction_id: number;
   post_date: number;
   Attachments: XFEntityAttachment[];
   embed_metadata: {[key: string]: any};
   view_url: string;
+
+  message_state: XFEntityState;
 }
 
 // Attachment
@@ -206,10 +226,9 @@ export interface XFEntityConversation {
   view_url: string;
 }
 
-export interface XFEntityConversationMessage {
+export interface XFEntityConversationMessage extends XFEntityReactionData {
   attach_count: number;
   can_edit: boolean;
-  can_react: boolean;
   embed_metadata: {[key: string]: any};
   is_unread: boolean;
   message_id: number;
@@ -219,25 +238,24 @@ export interface XFEntityConversationMessage {
   conversation_id: number;
   message_date: number;
   message_parsed: string;
-  is_reacted_to: boolean;
-  visitor_reaction_id: number;
   reaction_score: number;
   view_url: string;
+  message_state: XFEntityState;
 }
 
 // ProfilePost
-export interface XFEntityProfilePost {
+export interface XFEntityProfilePost extends XFEntityReactionData {
   profile_post_id: number;
   profile_user_id: number;
+
   can_comment: boolean;
+  can_edit: boolean;
   can_ignore: boolean;
-  can_react: boolean;
   can_soft_delete: boolean;
   can_view_attachments: boolean;
+
   comment_count: number;
   is_ignored: boolean;
-  is_reacted_to: boolean;
-  visitor_reaction_id: number;
   message: string;
   message_parsed: string;
   post_date: number;
@@ -245,15 +263,18 @@ export interface XFEntityProfilePost {
   username: string;
   User: XFEntityUser | null;
   view_url: string;
+  message_state: XFEntityState;
 }
 
-export interface XFEntityProfilePostComment {
-  can_react: boolean;
+export interface XFEntityProfilePostComment extends XFEntityReactionData {
+  can_edit: boolean;
+  can_hard_delete: boolean;
+  can_ignore: boolean;
   can_soft_delete: boolean;
+  can_view_attachments: boolean;
+
   comment_date: number;
   is_ignored: boolean;
-  is_reacted_to: boolean;
-  visitor_reaction_id: number;
   message: string;
   message_parsed: string;
   profile_post_comment_id: number;
@@ -262,6 +283,8 @@ export interface XFEntityProfilePostComment {
   user_id: number;
   username: string;
   view_url: string;
+  message_state: XFEntityState;
+  embed_metadata: {[key: string]: any};
 }
 
 // Reactions
@@ -273,4 +296,14 @@ export interface XFEntityReactionContent {
   reaction_user_id: number;
   reaction_date: number;
   ReactionUser: XFEntityUser | null;
+}
+
+export interface XFEntityReactionData {
+  can_react: boolean;
+  is_reacted_to: boolean;
+  visitor_reaction_id?: number;
+  tapi_reactions: Array<{
+    image: string;
+    total: number;
+  }>
 }
