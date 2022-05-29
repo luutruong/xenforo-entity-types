@@ -161,6 +161,7 @@ export interface XFEntityPost extends XFEntityReactionData {
   view_url: string;
 
   message_state: XFEntityState;
+  Thread: XFEntityThread;
 }
 
 // Attachment
@@ -241,6 +242,7 @@ export interface XFEntityConversationMessage extends XFEntityReactionData {
   reaction_score: number;
   view_url: string;
   message_state: XFEntityState;
+  Conversation: XFEntityConversation;
 }
 
 // ProfilePost
