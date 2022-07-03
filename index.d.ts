@@ -309,3 +309,11 @@ export interface XFEntityReactionData {
     total: number;
   }>
 }
+
+export interface XFPaginationData {
+  current_page: number
+  last_page: number
+  per_page: number
+  shown: number
+  total: number
+}
