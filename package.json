@@ -1,6 +1,6 @@
 {
   "name": "xenforo-entity-types",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "XenForo entity in typescript",
   "main": "index.js",
   "repository": {
