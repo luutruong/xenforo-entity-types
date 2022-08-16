@@ -8,7 +8,9 @@
     "url": "git+https://github.com/luutruong/xenforo-entity-types.git"
   },
   "keywords": [
-    "xenforo"
+    "xenforo",
+    "xenforo typescript",
+    "xenforo api"
   ],
   "author": "Truong Luu",
   "license": "MIT",
