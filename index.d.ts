@@ -41,7 +41,7 @@ export namespace XFEntity {
   }
 
   // Thread
-  export interface Thread {
+  export interface Thread extends ContentVote {
     can_edit: boolean;
     can_edit_tags: boolean;
     can_hard_delete: boolean;
@@ -66,8 +66,8 @@ export namespace XFEntity {
     highlighted_post_ids: number[];
     is_first_post_pinned: boolean;
     is_ignored: boolean;
-    is_unread: boolean;
-    is_watching: boolean;
+    is_unread?: boolean;
+    is_watching?: boolean;
     last_post_date: number;
     LastPost?: Post | null;
     last_post_id: number;
@@ -87,7 +87,7 @@ export namespace XFEntity {
     username: string;
     view_count: number;
     view_url: string;
-    visitor_post_count: number;
+    visitor_post_count?: number;
   }
 
   export interface PrefixGroup {
@@ -177,7 +177,7 @@ export namespace XFEntity {
   }
 
   // Post
-  export interface Post extends ReactionData {
+  export interface Post extends ReactionData, ContentVote {
     post_id: number;
     user_id: number;
     username: string;
@@ -190,10 +190,12 @@ export namespace XFEntity {
     can_report: boolean;
     can_soft_delete: boolean;
     is_ignored: boolean;
+    is_unread?: boolean;
     post_date: number;
     Attachments: Attachment[];
     embed_metadata: {[key: string]: any};
     view_url: string;
+    can_view_attachments: boolean;
 
     message_state: VisibilityState;
     Thread: Thread;
@@ -367,4 +369,12 @@ export namespace XFEntity {
   }
 
   export type CustomFieldValue = {[key: string]: any};
+
+  export interface ContentVote {
+    vote_score?: number;
+    can_content_vote?: boolean;
+    allowed_content_vote_types?: string[];
+    is_content_voted?: boolean;
+    visitor_content_vote?: string | boolean;
+  }
 }
