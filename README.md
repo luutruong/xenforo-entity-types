@@ -15,3 +15,12 @@ Yarn:
 ```bash
 yarn add -D xenforo-entity-types
 ```
+
+## Usage
+
+```typescript
+import {XFEntity} from 'xenforo-entity-types'
+import {XFRMEntity} from 'xenforo-entity-types/XFRM'
+
+const post: XFEntity.Post = {...}
+```
